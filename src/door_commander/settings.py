@@ -31,6 +31,8 @@ from icecream import ic
 from .atomic_globals import AtomicGlobals
 
 # This tool allows to either declare all or no settings at all for a specific feature.
+from .loglevel import AUDIT
+
 atomic_globals = AtomicGlobals()
 
 # ================================================================
@@ -45,6 +47,8 @@ try:
 except:
     RichHandler = None
 
+
+logging.addLevelName(AUDIT, "AUDIT")
 _DJANGO_LOGGING = os.getenv("DJANGO_LOGGING")
 LOGGING = json.loads(_DJANGO_LOGGING) if _DJANGO_LOGGING else {
     'version': 1,
