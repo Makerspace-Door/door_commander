@@ -52,18 +52,18 @@ class MqttDoorCommanderEndpoint(GenericMqttEndpoint):
             timestamp = props.timestamp
             parsed_payload = loads(message.payload)
             # door_id, = unpack_topic("door/+/presence", message.topic)
-            ic(topic,
-               props,
-               locally_faked_timestamp,
-               timestamp,
-               retained,
-               message.payload,
-               parsed_payload,
-               door_id)
+            #ic(topic,
+            #   props,
+            #   locally_faked_timestamp,
+            #   timestamp,
+            #   retained,
+            #   message.payload,
+            #   parsed_payload,
+            #   door_id)
 
             self._doors_presence[door_id] = bool(parsed_payload)
 
-            ic(self._doors_presence)
+            #ic(self._doors_presence)
         except:
             log.error("Failed to parse door presence message.")
 

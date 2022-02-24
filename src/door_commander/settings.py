@@ -31,6 +31,8 @@ from icecream import ic
 from .atomic_globals import AtomicGlobals
 
 # This tool allows to either declare all or no settings at all for a specific feature.
+from .loglevel import AUDIT
+
 atomic_globals = AtomicGlobals()
 
 # ================================================================
@@ -45,6 +47,8 @@ try:
 except:
     RichHandler = None
 
+
+logging.addLevelName(AUDIT, "AUDIT")
 _DJANGO_LOGGING = os.getenv("DJANGO_LOGGING")
 LOGGING = json.loads(_DJANGO_LOGGING) if _DJANGO_LOGGING else {
     'version': 1,
@@ -105,6 +109,7 @@ INTERNAL_IPS = ['127.0.0.1', '::1']
 
 SECRET_KEY_FILE = BASE_DIR.joinpath("./data/django-secret-key.json")
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 def load_or_create_secret_key() -> str:
     # TODO we now pass all secrets via environment, we might want to do this here too.
@@ -285,6 +290,7 @@ else:
     IPWARE_REVERSE_PROXIES = []
 
 PERMITTED_IP_NETWORKS = [ipaddress.ip_network('192.168.0.0/24')]
+IPWARE_KWARGS = {}
 
 # ================================================================
 # MQTT Configuration

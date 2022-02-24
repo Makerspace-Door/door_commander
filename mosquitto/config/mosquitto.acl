@@ -7,7 +7,7 @@ pattern read #
 # Doors can write their own status and confirm receipt
 # Door usernames should be semantic-free, e.g. UUIDs
 pattern readwrite locator/%u/#
-pattern readwrite door/%u/status
+pattern readwrite door/%u/presence
 pattern readwrite door/%u/open/confirm
 # TODO pattern probably does not yet match the python implementation
 

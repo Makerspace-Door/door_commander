@@ -144,10 +144,10 @@ services:
               "handlers": [
                 "console"
               ],
-              "level": "DEBUG",
+              "level": "WARN",
               "propagate": false
             },
-            "web_homepage.views": {"level":"DEBUG"},
+            "web_homepage.views": {"level":"WARN"},
             "ipware.ip": {"level":"ERROR"}
           }
         }
